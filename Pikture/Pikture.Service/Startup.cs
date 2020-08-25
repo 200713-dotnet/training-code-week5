@@ -25,6 +25,14 @@ namespace Pikture.Service
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddCors(ops =>
+      {
+        ops.AddDefaultPolicy(ops => 
+        {
+          ops.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+        });
+      });
+
       services.AddControllers();
       services.AddSwaggerGen(options =>
       {
@@ -44,6 +52,7 @@ namespace Pikture.Service
         app.UseDeveloperExceptionPage();
       }
 
+      app.UseCors();
       app.UseRouting();
       app.UseSwagger();
       app.UseSwaggerUI(options =>

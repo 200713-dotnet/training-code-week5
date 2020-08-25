@@ -10,7 +10,8 @@ namespace Pikture.Service.Controllers
     [HttpGet]
     public IActionResult Get()
     {
-      return Ok("http://placecorgi.com/300");
+      // return Ok("http://placecorgi.com/300");
+      return Ok(new JsonResult("http://placecorgi.com/300"));
     }
 
     [HttpGet("{width}/{height?}")] //image/200/
